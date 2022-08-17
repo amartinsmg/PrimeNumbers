@@ -1,0 +1,14 @@
+services:
+  db:
+    container_name: db_container
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root123
+      POSTGRES_DB: prime_numbers
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db:/var/lib/postgresql/data/
+
