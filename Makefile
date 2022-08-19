@@ -7,7 +7,7 @@ endif
 all: calc text-single text-multiple db_multiblock db_singleblock db_singleexec db_singlecommand
 
 lib:
-	[ !$(OS) == Windows_NT ] || [ -d libs ] || git clone https://github.com/ClickHouse/libpq.git libs
+	[ $(OS) != Windows_NT ] || [ -d libs ] || git clone https://github.com/ClickHouse/libpq.git libs
 
 dir:
 	[ -d build ] || mkdir build
