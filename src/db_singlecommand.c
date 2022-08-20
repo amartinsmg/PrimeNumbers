@@ -24,8 +24,7 @@ int main()
   {
     fprintf(stderr, "Connection to database failed: %s\n",
             PQerrorMessage(conn));
-    PQfinish(conn);
-    return 1;
+    exit(-1);
   }
 
   res = PQexec(conn, "DROP TABLE IF EXISTS single_command;"
@@ -34,8 +33,7 @@ int main()
   if (PQresultStatus(res) != PGRES_COMMAND_OK)
   {
     fprintf(stderr, "%s\n", PQerrorMessage(conn));
-    PQfinish(conn);
-    return 1;
+    exit(-1);
   }
 
   prime = nthPrime(num, (void *)(query + strlen(query)), callback);
@@ -47,10 +45,10 @@ int main()
   if (PQresultStatus(res) != PGRES_COMMAND_OK)
   {
     fprintf(stderr, "%s\n", PQerrorMessage(conn));
-    PQfinish(conn);
-    return 1;
+    exit(-1);
   }
 
+  free(query);
   PQfinish(conn);
 
   printf("%d\n", prime);

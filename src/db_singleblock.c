@@ -39,6 +39,12 @@ int main()
   prime = nthPrime(num, (void *)conn, callback);
   PQexec(conn, "COMMIT");
 
+  if (PQresultStatus(res) != PGRES_COMMAND_OK)
+  {
+    fprintf(stderr, "%s\n", PQerrorMessage(conn));
+    exit(-1);
+  }
+
   PQfinish(conn);
 
   printf("%d\n", prime);

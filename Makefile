@@ -4,7 +4,7 @@ ifeq ($(OS), Windows_NT)
 	Libs=-I libs -I libs/include
 endif
 
-all: calc text-single text-multiple db_multiblock db_singleblock db_singleexec db_singlecommand
+all: calc text-single text-multiple bin-single bin-multiple db_multiblock db_singleblock db_singleexec db_singlecommand
 
 lib:
 	[ $(OS) != Windows_NT ] || [ -d libs ] || git clone https://github.com/ClickHouse/libpq.git libs
@@ -20,6 +20,12 @@ text-single: dir
 
 text-multiple: dir
 	gcc -o build/text_multiple -O3 src/text_multiple.c
+
+bin-single: dir
+	gcc -o build/bin_single -O3 src/bin_single.c
+
+bin-multiple: dir
+	gcc -o build/bin_multiple -O3 src/bin_multiple.c
 
 db_multiblock: dir lib
 	gcc -o build/db_multiblock $(Libs) -L$(LibPG_path) -O3 src/db_multiblock.c -lpq

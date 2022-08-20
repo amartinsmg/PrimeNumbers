@@ -3,33 +3,32 @@
 #include <libgen.h>
 #include "nth_prime.h"
 
-
 void callback(int num, void *data)
 {
   FILE *file = (FILE *)data;
-  fprintf(file, "%d\n", num);
+  fwrite(&num, sizeof(num), 1, file);
 }
 
 int main(int argc, char **argv)
 {
-  FILE *txtFile;
+  FILE *binFile;
   int prime, num = 1000000;
   char fileName[300];
 
-  sprintf(fileName, "%s/multiple.txt", argc ? dirname(argv[0]) : ".");
+  sprintf(fileName, "%s/multiple.bin", argc ? dirname(argv[0]) : ".");
 
   remove(fileName);
-  txtFile = fopen(fileName, "a");
+  binFile = fopen(fileName, "ab");
 
-  if(txtFile == NULL)
+  if (binFile == NULL)
   {
     fprintf(stderr, "Could not open the file.\n");
     exit(-1);
   }
 
-  prime = nthPrime(num, (void *)txtFile, callback);
+  prime = nthPrime(num, (void *)binFile, callback);
 
-  fclose(txtFile);
+  fclose(binFile);
 
   printf("%d\n", prime);
 

@@ -21,8 +21,7 @@ int main()
   if (PQstatus(conn) == CONNECTION_BAD)
   {
     fprintf(stderr, "Connection to database failed: %s\n", PQerrorMessage(conn));
-    PQfinish(conn);
-    return 1;
+    exit(-1);
   }
 
   res = PQexec(conn, "DROP TABLE IF EXISTS multi_block;"
@@ -31,8 +30,7 @@ int main()
   if (PQresultStatus(res) != PGRES_COMMAND_OK)
   {
     fprintf(stderr, "%s\n", PQerrorMessage(conn));
-    PQfinish(conn);
-    return 1;
+    exit(-1);
   }
 
   prime = nthPrime(num, (void *)conn, callback);
