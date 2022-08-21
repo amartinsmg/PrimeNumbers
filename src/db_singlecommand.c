@@ -7,15 +7,15 @@
 void callback(int num, void *data)
 {
   static int buffer = 0;
-  char *str = (char *)data;
-  buffer += sprintf(str + buffer, "(%d),", num);
+  char *str = (char *)(data + buffer);
+  buffer += sprintf(str, "(%d),", num);
 }
 
 int main()
 {
   PGconn *conn = PQconnectdb("user=root password=root123 dbname=prime_numbers");
-  char *query = (char *)calloc(12000000, sizeof(*query));
   int prime, num = 1000000;
+  char *query = (char *)calloc(12 * num, sizeof(*query));
   PGresult *res;
 
   sprintf(query, "INSERT INTO single_command(num) VALUES ");

@@ -2,7 +2,7 @@
 
 int nthPrime(int n, void *data, void (*callback)(int, void*))
 {
-  int *numList = (int *)malloc(sizeof(int) * n);
+  int *numList = (int *)malloc(sizeof(*numList) * n);
   numList[0] = 2;
   int len = 1,
       num = 2;

@@ -10,4 +10,4 @@
 | Insertion into the database with a single command                 | [db_singlecommand.c](./src/db_singlecommand.c) | 15.430s         |
 | Insertions into the database concatenated into a single statement | [db_singleexec.c](./src/db_singleexec.c)       | 32.763s         |
 | Insertions into the database executed in a single transaction     | [db_singleblock.c](./src/db_singleblock.c)     | 13m 37.060s     |
-| Insertions into the database executed in multiple transactions    | [db_multiblock.c](./src/db_multiblock.c)       | 110m            |
+| Insertions into the database executed in multiple transactions    | [db_multiblock.c](./src/db_multiblock.c)       | 112m 20.118s            |
