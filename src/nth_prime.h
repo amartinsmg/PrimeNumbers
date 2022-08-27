@@ -1,15 +1,15 @@
 #include <stdlib.h>
 
-int nthPrime(int n, void *data, void (*callback)(int, void*))
+int nthPrime(int n, void *data, void (*callback)(int, void *))
 {
-  int *numList = (int *)malloc(sizeof(*numList) * n);
+  int *numList = (int *)malloc(sizeof(*numList) * n),
+      i, len, num = 2;
   numList[0] = 2;
-  int len = 1,
-      num = 2;
+  len = 1;
   callback(2, data);
   while (len < n)
   {
-    for (int i = 0; i < len; i++)
+    for (i = 0; i < len; i++)
     {
       if (num % numList[i] == 0)
         break;
