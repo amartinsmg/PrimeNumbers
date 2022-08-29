@@ -3,9 +3,9 @@
 int nthPrime(int n, void *data, void (*callback)(int, void *))
 {
   int *numList = (int *)malloc(sizeof(*numList) * n),
-      i, len, num = 2;
-  numList[0] = 2;
-  len = 1;
+      i, len = 0,
+      num = 2;
+  numList[len++] = 2;
   callback(2, data);
   while (len < n)
   {
