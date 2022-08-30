@@ -1,4 +1,4 @@
-Include=-I libs
+Include=-I "C:/Program Files/PostgreSQL/14/include"
 LibPG_path=-L "C:/Program Files/PostgreSQL/14/lib"
 CC=gcc
 
