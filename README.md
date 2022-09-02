@@ -8,7 +8,7 @@ The measurements in the table below were performed using the `time` command in G
 
 | Operation                                                                  | Source file                                    | Average Runtime |
 | -------------------------------------------------------------------------- | ---------------------------------------------- | --------------- |
-| No operation                                                                | [calc.c](./src/calc.c)                         | 1.418s          |
+| No operation                                                               | [calc.c](./src/calc.c)                         | 1.418s          |
 | Multiple write operations on a binary file                                 | [bin_multiple.c](./src/bin_multiple.c)         | 1.470s          |
 | Single write operation on a binary file                                    | [bin_single.c](./src/bin_single.c)             | 1.526s          |
 | Single write operation on a text file                                      | [text_single.c](./src/text_single.c)           | 1.569s          |
@@ -31,7 +31,8 @@ make
 To run the container with the PostgreSQL database, run the command below:
 
 ```sh
-docker compose up
+docker compose create
+docker start db_container
 ```
 
 <sub>**Note**: before run this command, make sure you have installed the [Docker engine](https://docs.docker.com/engine/install/) and the [Docker Compose](https://docs.docker.com/compose/install/).</sub>

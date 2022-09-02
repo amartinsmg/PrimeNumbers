@@ -7,9 +7,15 @@
 void callback(int num, void *data)
 {
   PGconn *conn = (PGconn *)data;
+  PGresult *res;
   char query[50];
   sprintf(query, "INSERT INTO single_block(num) VALUES(%d);", num);
-  PQexec(conn, query);
+  res = PQexec(conn, query);
+  if (PQresultStatus(res) != PGRES_COMMAND_OK)
+  {
+    fprintf(stderr, "%s\n", PQerrorMessage(conn));
+    exit(-1);
+  }
 }
 
 int main()
@@ -38,12 +44,6 @@ int main()
   PQexec(conn, "BEGIN");
   prime = nthPrime(num, (void *)conn, callback);
   PQexec(conn, "COMMIT");
-
-  if (PQresultStatus(res) != PGRES_COMMAND_OK)
-  {
-    fprintf(stderr, "%s\n", PQerrorMessage(conn));
-    exit(-1);
-  }
 
   PQfinish(conn);
 
