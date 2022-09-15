@@ -9,7 +9,7 @@ void callback(int num, void *data)
   PGconn *conn = (PGconn *)data;
   PGresult *res;
   char query[50];
-  sprintf(query, "INSERT INTO multi_block(num) VALUES(%d);", num);
+  sprintf(query, "INSERT INTO tb_multi_block(num) VALUES(%d);", num);
   res = PQexec(conn, query);
   if (PQresultStatus(res) != PGRES_COMMAND_OK)
   {
@@ -30,8 +30,8 @@ int main()
     exit(-1);
   }
 
-  res = PQexec(conn, "DROP TABLE IF EXISTS multi_block;"
-                     "CREATE TABLE multi_block(id SERIAL PRIMARY KEY, num INTEGER NOT NULL)");
+  res = PQexec(conn, "DROP TABLE IF EXISTS tb_multi_block;"
+                     "CREATE TABLE tb_multi_block(id SERIAL PRIMARY KEY, num INTEGER NOT NULL)");
 
   if (PQresultStatus(res) != PGRES_COMMAND_OK)
   {

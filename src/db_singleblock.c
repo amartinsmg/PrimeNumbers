@@ -9,7 +9,7 @@ void callback(int num, void *data)
   PGconn *conn = (PGconn *)data;
   PGresult *res;
   char query[50];
-  sprintf(query, "INSERT INTO single_block(num) VALUES(%d);", num);
+  sprintf(query, "INSERT INTO tb_single_block(num) VALUES(%d);", num);
   res = PQexec(conn, query);
   if (PQresultStatus(res) != PGRES_COMMAND_OK)
   {
@@ -31,8 +31,8 @@ int main()
     return 1;
   }
 
-  res = PQexec(conn, "DROP TABLE IF EXISTS single_block;"
-                     "CREATE TABLE single_block(id SERIAL PRIMARY KEY, num INTEGER NOT NULL)");
+  res = PQexec(conn, "DROP TABLE IF EXISTS tb_single_block;"
+                     "CREATE TABLE tb_single_block(id SERIAL PRIMARY KEY, num INTEGER NOT NULL)");
 
   if (PQresultStatus(res) != PGRES_COMMAND_OK)
   {

@@ -18,7 +18,7 @@ int main()
   char *query = (char *)calloc(12 * num, sizeof(*query));
   PGresult *res;
 
-  sprintf(query, "INSERT INTO single_command(num) VALUES ");
+  sprintf(query, "INSERT INTO tb_single_command(num) VALUES ");
 
   if (PQstatus(conn) == CONNECTION_BAD)
   {
@@ -27,8 +27,8 @@ int main()
     exit(-1);
   }
 
-  res = PQexec(conn, "DROP TABLE IF EXISTS single_command;"
-                     "CREATE TABLE single_command(id SERIAL PRIMARY KEY, num INTEGER NOT NULL)");
+  res = PQexec(conn, "DROP TABLE IF EXISTS tb_single_command;"
+                     "CREATE TABLE tb_single_command(id SERIAL PRIMARY KEY, num INTEGER NOT NULL)");
 
   if (PQresultStatus(res) != PGRES_COMMAND_OK)
   {

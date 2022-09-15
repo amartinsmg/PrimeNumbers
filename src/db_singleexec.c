@@ -8,7 +8,7 @@ void callback(int num, void *data)
 {
   static int buffer = 0;
   char *str = (char *)(data + buffer);
-  buffer += sprintf(str, "INSERT INTO single_exec(num) VALUES (%d);", num);
+  buffer += sprintf(str, "INSERT INTO tb_single_exec(num) VALUES (%d);", num);
 }
 
 int main()
@@ -25,8 +25,8 @@ int main()
     exit(-1);
   }
 
-  res = PQexec(conn, "DROP TABLE IF EXISTS single_exec;"
-                     "CREATE TABLE single_exec(id SERIAL PRIMARY KEY, num INTEGER NOT NULL)");
+  res = PQexec(conn, "DROP TABLE IF EXISTS tb_single_exec;"
+                     "CREATE TABLE tb_single_exec(id SERIAL PRIMARY KEY, num INTEGER NOT NULL)");
 
   if (PQresultStatus(res) != PGRES_COMMAND_OK)
   {
