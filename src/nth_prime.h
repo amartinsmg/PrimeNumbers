@@ -1,5 +1,13 @@
 #include <stdlib.h>
 
+/**
+  Calculates the nth prime number and calls a callback function with the n first prime numbers.
+  @param n The index of the desired prime number
+  @param data A pointer to a generic data type to be passed to the callback function
+  @param callback A function pointer to the callback function that receives each prime number found and the data pointer
+  @return The nth prime number
+*/
+
 int nthPrime(int n, void *data, void (*callback)(int, void *))
 {
   int *numList = (int *)malloc(sizeof(*numList) * n),
