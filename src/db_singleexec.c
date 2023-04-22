@@ -4,12 +4,26 @@
 #include <libpq-fe.h>
 #include "nth_prime.h"
 
+/**
+  This function writes an SQL INSERT command for each integer found to a buffer.
+  @param num The integer found.
+  @param data A pointer to the buffer where the SQL commands will be written.
+*/
+
 void callback(int num, void *data)
 {
   static int buffer = 0;
   char *str = (char *)(data + buffer);
   buffer += sprintf(str, "INSERT INTO tb_single_exec(num) VALUES (%d);", num);
 }
+
+/**
+  The function connects to the database using the credentials specified in the
+  connection string and creates a table called tb_single_exec. Next, it generates
+  SQL INSERT commands for the n first prime numbers, and executes them against
+  a PostgreSQL database. 
+  @return The exit status of the program.
+*/
 
 int main()
 {
