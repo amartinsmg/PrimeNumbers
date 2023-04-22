@@ -3,12 +3,26 @@
 #include <libgen.h>
 #include "nth_prime.h"
 
+/**
+  This function writes the given number to a text file.
+  @param num The number to be written to the file.
+  @param data A pointer to a FILE struct representing the text file.
+*/
 
 void callback(int num, void *data)
 {
   FILE *file = (FILE *)data;
   fprintf(file, "%d\n", num);
 }
+
+/**
+  This function generates the nth prime number and stores the first n prime numbers in a
+  text file. The file name is "multiple.txt" and is saved in the same directory where the
+  program is run.
+  @param argc The number of command line arguments passed to the program.
+  @param argv An array of strings containing the command line arguments.
+  @return The exit status of the program.
+*/
 
 int main(int argc, char **argv)
 {
