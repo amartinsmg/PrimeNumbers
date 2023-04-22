@@ -1,3 +1,14 @@
+# This will create and start the db service, that is configured with the following environment variables:
+
+# POSTGRES_USER: sets the username for the PostgreSQL server. In this case, it is set to root.
+# POSTGRES_PASSWORD: sets the password for the PostgreSQL server. In this case, it is set to root123.
+# POSTGRES_DB: sets the name of the database to be created in the container. In this case, it is set to prime_numbers.
+
+# The container also maps port 5432 on the host to port 5432 inside the container, allowing you to connect to the PostgreSQL server from outside the container.
+
+# The container is configured with a volume that maps the ./db directory on the host to /var/lib/postgresql/data/ inside the container.
+
+
 services:
   db:
     container_name: db_container
