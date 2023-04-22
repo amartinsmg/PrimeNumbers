@@ -4,12 +4,29 @@
 #include <libgen.h>
 #include "nth_prime.h"
 
+/**
+  This function receives a number and a string buffer as input arguments, and appends the
+  number to the buffer as a new line. The "buffer" static variable stores the current number
+  of elements in the string buffer.
+  @param num The number to be appended to the buffer.
+  @param data A pointer to the buffer where the numbers will be stored.
+*/
+
 void callback(int num, void *data)
 {
   static int buffer = 0;
   char *str = (char *)data;
   buffer += sprintf(str + buffer, "%d\n", num);
 }
+
+/**
+  This function writes all the n first prime numbers found by the nthPrime function and
+  stored in a string buffer into a text file. The file name is "single.txt" and is saved
+  in the same directory where the program is run.
+  @param argc The number of command line arguments passed to the program.
+  @param argv An array of strings containing the command line arguments.
+  @return The exit status of the program.
+*/
 
 int main(int argc, char **argv)
 {
