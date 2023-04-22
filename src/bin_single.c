@@ -3,12 +3,28 @@
 #include <libgen.h>
 #include "nth_prime.h"
 
+/**
+  This function receives a number and stores it in an array pointed by the void pointer
+  "data". The "size" static variable stores the current number of elements in the array.
+  @param num The number.
+  @param data A void pointer to an array of integers.
+*/
+
 void callback(int num, void *data)
 {
   static int size = 0;
   int *nums = (int *)data;
   nums[size++] = num;
 }
+
+/**
+  This function writes all the n first prime numbers found by the nthPrime function and stored
+  in a array into a binary file. The file name is "single.bin" and is saved in the same
+  directory where the program is run.
+  @param argc The number of command line arguments passed to the program.
+  @param argv An array of strings containing the command line arguments.
+  @return The exit status of the program.
+*/
 
 int main(int argc, char **argv)
 {
