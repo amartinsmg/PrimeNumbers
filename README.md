@@ -26,7 +26,7 @@ The table below shows the runtime for each operation, measured using the `time` 
 
 The [Makefile](./Makefile) provides an easy way to compile all source files to binary format. To compile all source files at once, simply clone this repository and run the command `make`.
 
-However, it is important to note that you may need to open the Makefile and verify the values of some variables, such as CC for the compiler, Include for the include path, and LibPG_path for the path to the PostgreSQL library.
+However, it is important to note that you may need to open the Makefile and verify the values of these variables: CC for the compiler, Include for the include path, and LibPG_path for the path to the PostgreSQL library.
 
 To run the docker container with the PostgreSQL database, run the command below:
 
