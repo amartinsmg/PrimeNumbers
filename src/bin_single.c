@@ -18,9 +18,9 @@ void callback(int num, void *data)
 }
 
 /**
-  This function writes all the n first prime numbers found by the nthPrime function and stored
-  in a array into a binary file. The file name is "single.bin" and is saved in the same
-  directory where the program is run.
+  This function stores the n first prime numbers found by the nthPrime function in an array
+  and saves the array into a binary file. The file name is "single.bin" and is saved in
+  the same directory where the program is run.
   @param argc The number of command line arguments passed to the program.
   @param argv An array of strings containing the command line arguments.
   @return The exit status of the program.
