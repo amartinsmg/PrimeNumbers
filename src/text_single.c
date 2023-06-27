@@ -20,9 +20,9 @@ void callback(int num, void *data)
 }
 
 /**
-  This function writes all the n first prime numbers found by the nthPrime function and
-  stored in a string buffer into a text file. The file name is "single.txt" and is saved
-  in the same directory where the program is run.
+  This function writes all the n first prime numbers found by the nthPrime function in a
+  string buffer and saves the buffer into a text file. The file name is "single.txt" and 
+  s saved in the same directory where the program is run.
   @param argc The number of command line arguments passed to the program.
   @param argv An array of strings containing the command line arguments.
   @return The exit status of the program.
